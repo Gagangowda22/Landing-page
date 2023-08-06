@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Dynamic from "./components/Dynamic";
 import ArticleTwo from "./components/ArticleTwo";
 import ArticleOne from "./components/ArticleOne";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
   return (
@@ -20,8 +22,19 @@ function App() {
         <Route path="/posts/article-two" element={<ArticleTwo />} />
       </Routes>
       <Footer />
+      <ScrollToTop />
     </Router>
   );
 }
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 export default App;
